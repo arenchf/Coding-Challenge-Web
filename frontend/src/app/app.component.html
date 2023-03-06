@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="message-list">
+    <ng-container *ngFor="let entry of data$">
+      <p [class]="'from-' + (entry.nickname === nickname ? 'me' : 'them')" >
+        <span>{{ entry.nickname }}</span><br>
+        {{ entry.message }}
+        <br>
+        <span class="sent-at">{{entry.sentAt | date:'dd.MM.yyyy hh:mm'}}</span>
+      </p>
+    </ng-container>
+    
+    <input (keyup)="$event.keyCode == 13 ? handleKeyUp():null" (input)="onInput(msgInput.value)" type="text" #msgInput style="margin-top: 50px;">
+  </div>
+</div>
